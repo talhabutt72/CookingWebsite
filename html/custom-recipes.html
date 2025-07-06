@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Custom Recipes</title>
+    <link rel="icon" type="image/png" href="../images/favicon-16x16.png" sizes="16x16">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cookies</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="custom-recipes.html">My Recipes</a></li>
+                <li><a href="generate-recipe.html">Generate Recipe</a></li>
+                <li><a href="about.html">About Us</a></li>
+
+                <!-- The Add Recipe button will be injected by JS -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="custom-recipes-section">
+            <h2>My Custom Recipes</h2>
+            <button id="add-new-custom-recipe-btn" class="add-recipe-btn">Add New Recipe</button>
+            <div id="custom-recipes-container" class="recipe-cards"></div>
+        </section>
+
+        <!-- Add/Edit Recipe Modal -->
+        <div id="recipe-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Add/Edit Recipe</h2>
+                <form id="addRecipeForm">
+                    <label for="recipeTitle">Recipe Name:</label>
+                    <input type="text" id="recipeTitle" required>
+
+            <div class="form-group">
+                <label for="recipeCategorySelect">Category:</label>
+                <select id="recipeCategorySelect" class="form-control"></select>
+                <input type="text" id="newCategoryInput" class="form-control" placeholder="Enter new category" style="display: none;">
+                <button type="button" id="toggleNewCategoryInput" class="btn">New Category</button>
+            </div>
+
+                    <label for="recipeIngredients">Ingredients (one per line):</label>
+                    <textarea id="recipeIngredients" rows="5" required></textarea>
+
+                    <label for="recipeSteps">Instructions (one per line):</label>
+                    <textarea id="recipeSteps" rows="5" required></textarea>
+
+                    <label for="image-url">Image URL:</label>
+                    <input type="text" id="image-url">
+
+                    <button type="submit" class="btn">Save Recipe</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
+</main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Cookies. All rights reserved.</p>
+    </footer>
+
+    <script src="../scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Edit Recipe</title>
+    <link rel="icon" type="image/png" href="../images/favicon-16x16.png">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cookies</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="custom-recipes.html">My Recipes</a></li>
+                <li><a href="generate-recipe.html">Generate Recipe</a></li>
+                <li><a href="about.html">About Us</a></li>
+
+                <!-- The Add Recipe button will be injected by JS -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="recipe-detail">
+            <h2>Submit Your Recipe</h2>
+            <form id="addRecipeForm">
+                <label for="recipeTitle">Recipe Title:</label>
+                <input type="text" id="recipeTitle" name="recipeTitle" required>
+
+                <label for="recipeCategory">Category:</label>
+                <select id="recipeCategory" name="recipeCategory" required>
+                    <option value="">Select a Category</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Beverage">Beverage</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Gluten-Free">Gluten-Free</option>
+                    <option value="Other">Other (Specify New Category)</option>
+                </select>
+
+                <label for="recipeImage">Image URL (optional):</label>
+                <input type="text" id="recipeImage" name="recipeImage">
+
+                <div id="newCategoryInput" style="display: none;">
+                    <label for="newCategoryName">New Category Name:</label>
+                    <input type="text" id="newCategoryName" name="newCategoryName">
+                </div>
+                <div id="categoryError" style="color: red; margin-top: 5px;"></div>
+
+                <label for="recipeIngredients">Ingredients (one per line):</label>
+                <textarea id="recipeIngredients" name="recipeIngredients" rows="8" required></textarea>
+
+                <label for="recipeSteps">Steps (one per line):</label>
+                <textarea id="recipeSteps" name="recipeSteps" rows="8" required></textarea>
+
+                <button type="submit">Save Recipe</button>
+            </form>
+            <button onclick="window.history.back()">Back</button>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Cookies. All rights reserved.</p>
+    </footer>
+    <script src="../scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.addRecipeFormInitialized) {
+                addRecipeForm();
+                window.addRecipeFormInitialized = true;
+            }
+
+            // Check if we are editing a recipe
+            const editingRecipeId = localStorage.getItem('editingRecipeId');
+            if (editingRecipeId) {
+                const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+                const recipeToEdit = recipes.find(r => r.id === parseInt(editingRecipeId));
+
+                if (recipeToEdit) {
+                    document.getElementById('recipeTitle').value = recipeToEdit.title;
+                    document.getElementById('recipeCategory').value = recipeToEdit.category;
+                    document.getElementById('recipeImage').value = recipeToEdit.image;
+                    document.getElementById('recipeIngredients').value = recipeToEdit.ingredients.join('\n');
+                    document.getElementById('recipeSteps').value = recipeToEdit.steps.join('\n');
+                    document.querySelector('#addRecipeForm button[type="submit"]').textContent = 'Update Recipe';
+                }
+                localStorage.removeItem('editingRecipeId'); // Clear the flag after populating
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Recipes | Cookies</title>
+    <link rel="icon" type="image/png" href="../images/favicon-16x16.png">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cookies</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="custom-recipes.html">My Recipes</a></li>
+                <li><a href="generate-recipe.html">Generate Recipe</a></li>
+                <li><a href="about.html">About Us</a></li>
+
+                <!-- The Add Recipe button will be injected by JS -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="category-recipes-section">
+            <h2 id="category-title"></h2>
+            <div class="recipe-cards" id="category-recipes-container">
+                <!-- Recipes will be loaded here by JavaScript -->
+            </div>
+        </section>
+    </main>
+    <footer class="main-footer">
+        <p>&copy; 2025 Cookies. All rights reserved.</p>
+    </footer>
+    <script src="../scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category) {
+                document.getElementById('category-title').textContent = `${category} Recipes`;
+                renderCategoryRecipes(category);
+            } else {
+                document.getElementById('category-title').textContent = 'All Recipes';
+                renderCategoryRecipes(''); // Render all recipes if no category is specified
+            }
+        });
+    </script>
+</body>
+</html>

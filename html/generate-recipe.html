@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies – Generate Recipe</title>
+    <link rel="icon" type="image/png" href="../images/favicon-16x16.png" sizes="16x16">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cookies</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="custom-recipes.html">My Recipes</a></li>
+                <li><a href="generate-recipe.html">Generate Recipe</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="recipe-generator" class="container">
+            <h1>Recipe Generator</h1>
+            <form id="recipe-form">
+                <input type="text" id="recipe-name" placeholder="Enter recipe name (e.g., Chicken Curry)" required>
+                <button type="submit">Get Recipe</button>
+            </form>
+
+            <div id="recipe-output">
+                <!-- Recipe will be displayed here -->
+            </div>
+
+            <div id="error-message" class="error"></div>
+        </section>
+    </main>
+    <footer class="main-footer">
+        <p>&copy; 2025 Cookies. All rights reserved.</p>
+    </footer>
+    <script src="../scripts.js"></script>
+</body>
+</html>
